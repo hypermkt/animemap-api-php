@@ -1,10 +1,14 @@
 {
-  "require" : {
-    "zendframework/zend-http": "2.3.*"
-  },
-  "autoload": {
-    "psr-0": {
-      "AnimeMap\\": "lib"
+    "require" : {
+        "zendframework/zend-http": "2.3.*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "*",
+        "phpunit/php-invoker": "*"
+    },
+    "autoload": {
+        "psr-0": {
+            "AnimeMap\\": "lib"
+        }
     }
-  }
 }
