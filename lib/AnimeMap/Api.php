@@ -2,6 +2,8 @@
 
 namespace AnimeMap;
 
+use Instantiator\Exception\InvalidArgumentException;
+
 class Api
 {
     const API_ENDPOINT = 'http://animemap.net/api/table/';
@@ -13,8 +15,12 @@ class Api
         $this->_request = new \AnimeMap\Request();
     }
 
-    public function get($area)
+    public function searchByArea($area)
     {
+        if (empty($area) || !is_string($area)) {
+            throw new InvalidArgumentException('area:' . $area);
+        }
+
         $response = $this->_request->request($area);
         $body = json_decode($response->getBody());
         return $body->response->item;
