@@ -6,7 +6,7 @@ class ApiTest extends PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->_api = new ApiExtended();
+        $this->_api = new ClientExtended();
         $this->_api->_request = $this->getMock('\AnimeMap\Request', array('request'));
     }
 
@@ -40,7 +40,7 @@ class ApiTest extends PHPUnit_Framework_TestCase
     }
 }
 
-class ApiExtended extends AnimeMap\Api
+class ClientExtended extends AnimeMap\Client
 {
     public $_request;
 

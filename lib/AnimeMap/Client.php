@@ -4,7 +4,7 @@ namespace AnimeMap;
 
 use Instantiator\Exception\InvalidArgumentException;
 
-class Api
+class Client
 {
     const API_ENDPOINT = 'http://animemap.net/api/table/';
 

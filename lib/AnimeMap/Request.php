@@ -27,6 +27,6 @@ class Request
             throw new InvalidArgumentException('no such area:' . $area);
         }
 
-        return Api::API_ENDPOINT . $area . '.json';
+        return Client::API_ENDPOINT . $area . '.json';
     }
 }
