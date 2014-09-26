@@ -1,4 +1,10 @@
 {
+  "name": "hypermkt/animemap-api-php",
+  "type": "library",
+  "description": "A PHP client for ANIMEMAP API",
+  "keywords": ["php","client", "ANIMEMAP", "api"],
+  "homepage": "https://github.com/hypermkt/animemap-api-php",
+  "license": "MIT",
     "require" : {
         "zendframework/zend-http": "2.3.*"
     },
