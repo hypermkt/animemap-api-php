@@ -1,12 +1,12 @@
 <?php
 
-class ApiTest extends PHPUnit_Framework_TestCase
+class ClientTest extends PHPUnit_Framework_TestCase
 {
     protected $_api;
 
     protected function setUp()
     {
-        $this->_api = new ApiExtended();
+        $this->_api = new ClientExtended();
         $this->_api->_request = $this->getMock('\AnimeMap\Request', array('request'));
     }
 
@@ -15,12 +15,13 @@ class ApiTest extends PHPUnit_Framework_TestCase
         $response = new \Zend\Http\Response();
         $response->setContent(json_encode(array(
             'response' => array(
-                'item' => array()
+                'item' => array(
+                    'title' => 'hoge'
+                )
             )
         )));
         $this->_api->_request->expects($this->once())->method('request')->will($this->returnValue($response));
-        $this->assertEquals(array(), $this->_api->searchByArea('tokyo'));
-
+        $this->assertEquals(array('title' => 'hoge'), $this->_api->searchByArea('tokyo'));
     }
 
     /**
@@ -40,7 +41,7 @@ class ApiTest extends PHPUnit_Framework_TestCase
     }
 }
 
-class ApiExtended extends AnimeMap\Api
+class ClientExtended extends AnimeMap\Client
 {
     public $_request;
 
