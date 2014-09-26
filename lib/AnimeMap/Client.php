@@ -22,7 +22,10 @@ class Client
         }
 
         $response = $this->_request->request($area);
-        $body = json_decode($response->getBody());
-        return $body->response->item;
+        if ($response->isOk()) {
+            $body = json_decode($response->getBody(), true);
+            return $body['response']['item'];
+        }
+        return array();
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-class ApiTest extends PHPUnit_Framework_TestCase
+class ClientTest extends PHPUnit_Framework_TestCase
 {
     protected $_api;
 
@@ -15,12 +15,13 @@ class ApiTest extends PHPUnit_Framework_TestCase
         $response = new \Zend\Http\Response();
         $response->setContent(json_encode(array(
             'response' => array(
-                'item' => array()
+                'item' => array(
+                    'title' => 'hoge'
+                )
             )
         )));
         $this->_api->_request->expects($this->once())->method('request')->will($this->returnValue($response));
-        $this->assertEquals(array(), $this->_api->searchByArea('tokyo'));
-
+        $this->assertEquals(array('title' => 'hoge'), $this->_api->searchByArea('tokyo'));
     }
 
     /**
