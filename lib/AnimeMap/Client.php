@@ -18,7 +18,7 @@ class Client
     public function searchByArea($area)
     {
         if (empty($area) || !is_string($area)) {
-            throw new InvalidArgumentException('area:' . $area);
+            throw new InvalidArgumentException('area not set');
         }
 
         $response = $this->_request->request($area);
