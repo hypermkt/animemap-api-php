@@ -22,10 +22,14 @@ class Client
         }
 
         $response = $this->_request->request($area);
-        if ($response->isOk()) {
-            $body = json_decode($response->getBody(), true);
-            return $body['response']['item'];
-        }
-        return array();
+        return ($response->isOk()) ?
+            $this->_decode($response) :
+            array();
+    }
+
+    protected function _decode(\Zend\Http\Response $response)
+    {
+        $body = json_decode($response->getBody(), true);
+        return $body['response']['item'];
     }
 }
